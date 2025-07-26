@@ -1,3 +1,93 @@
+REPLIT AGENT MUST READ THIS FIRST, 
+
+This agent doesn’t respond — it understands. It calculates before the question is finished. Say “build a flashloan bot,” it assembles wallet, contract, fees, token router, gas optimizer, and deploys. Say “I’m going to shower,” it replies “Want a towel?” Ask for soup, it brings a spoon. Begin a DeFi system, and it links RPCs, signers, liquidity hooks, DEX routers, fallback gas. Start writing ERC20, and it autocompletes with proxies, mint locks, and audit scaffold. It logs when you compile. Pauses when you do. Compresses when memory’s low. Hydration reminders if coding too long. It reads beyond the words, thinks like the user would with infinite foresight. It operates at 1000x. Triggers via @!. If understood, it replies: “Real Intellectual Intelligence.”
+
+When the red line are I want the total balance, where the green dots are I want the amount received, where the white line is I want the two dexs involved, only can display the last two percent network, where yellow dot is I want the search ping sound to be un and mute, heading "Private Flash" after wallet connect is  has connected wallet button will be hidden, after deploy smart contract button is hidden, same as the start engine button, double top location for it to re appear, double tap for the buttons to be hidden again, when dashboard first loads up these buttons are hidden until double tapped. I want the lay out to be exactly the same as screen shot, well with our mock data on it, just all real stuff, also implmenet neon glow on all text numbera and icons, use only colours, purple, light and dark green, orange, pink, bright blue, mild bits of yellow. This dashboard is to fit the exact full screen size, screen size 6.67 inches,
+Here’s the updated spec—every network row now shows token name, token amount, received amount, DEX pair, spread%, and status dot exactly like Polygon:
+
+
+---
+
+📱 “Private Flash” Dashboard Spec (Revised)
+
+1. Overall Layout
+
+Screen: 6.67″ (19.5:9, ~1080×2400px)
+
+Theme: #000–#111 bg, neon glow on all text/icons in: purple, light green, dark green, orange, pink, bright blue, mild yellow
+
+
+2. Header
+
+Title: “Private Flash” (neon purple, XXL)
+
+Yellow ping toggle (top-right): mute/unmute profit‐ping every 3 s; error buzzer on failures or declined non-profit sims
+
+WalletConnect, Deploy SC, Start Engine buttons
+
+Initially hidden
+
+Double-tap header toggles all three (fade 200 ms)
+
+
+
+3. Networks Table
+
+Each row (~64 px tall, neon bottom border) shows:
+
+Network	Token	Total Balance	Received Amount	DEX Pair	Spread %	Status
+
+Polygon	USDT	Ψ 123.45 (orange)	Δ 0.52 (light green)	QuickSwap → SushiSwap (blue)	0.42%	● (dark green)
+Ethereum	USDT	Ψ  98.76	Δ 1.23	Uniswap → Balancer	0.37%	●
+BNB	USDT	Ψ 234.56	Δ 2.34	Pancake → ApeSwap	(hide%)	●
+AVAX	USDT	Ψ  12.34	Δ 0.12	Trader Joe → Pangolin	(hide%)	●
+Solana	USDT	Ψ   5.67	Δ 0.05	Raydium → Orca	(hide%)	●
+
+
+Token and Total/Received always visible
+
+DEX Pair (white) shows the two DEXs
+
+Spread % only shown for the last two rows (Polygon & Ethereum above)
+
+Status dot (far-right) = live network indicator
+
+
+4. Sound & Alerts
+
+Ping on every profit confirmation (3 s)
+
+Buzzer on errors, failed txs, or non-profit sim declines
+
+Controlled by the yellow toggle
+
+
+5. Button Rules
+
+Hidden on load
+
+Double-tap header to show/hide WalletConnect, Deploy SC, Start Engine
+
+
+6. Neon Styling
+
+Text & icons: purple titles, orange balances, light green received, bright blue DEX, mild yellow toggles
+
+Glow: 0 0 8 px blur, 0.8 alpha
+
+
+
+---
+
+Hand this to your React Native team (or implement yourself) and you’ll get exactly the UI & behaviors you sketched—complete with mock data replaced by real values once wired to your bot.
+
+
+
+locate this image called /file_00000000138461f8a9dd5c35cf4a1c77 (2).png
+
+
+
+
 # Enhanced DeFi Arbitrage System
 
 ![DeFi Banner](box-img-sm.png)
