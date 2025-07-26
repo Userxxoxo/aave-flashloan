@@ -1,0 +1,73 @@
+{
+  "name": "enhanced-defi-arbitrage-system",
+  "version": "1.0.0",
+  "description": "Complete DeFi arbitrage system with Python/Brownie backend and TypeScript services",
+  "main": "index.js",
+  "scripts": {
+    "start": "node scripts/start-enhanced-system.js",
+    "start:services": "cd services && npm run dev",
+    "start:python": "python scripts/polygon_arbitrage_bot.py",
+    "start:dashboard": "python run_dashboard.py",
+    "build": "npm run build:services",
+    "build:services": "cd services && npm run build",
+    "test": "npm run test:services && npm run test:python",
+    "test:services": "cd services && npm test",
+    "test:python": "brownie test",
+    "test:integration": "node scripts/system-health-check.js",
+    "lint": "npm run lint:services",
+    "lint:services": "cd services && npm run lint",
+    "format": "npm run format:services",
+    "format:services": "cd services && npm run format",
+    "health-check": "node scripts/system-health-check.js",
+    "deploy": "brownie run scripts/deploy_polygon_v3.py --network polygon-main",
+    "deploy:testnet": "brownie run scripts/deploy_polygon_v3.py --network polygon-test",
+    "setup": "npm run setup:services && npm run setup:python",
+    "setup:services": "cd services && npm install",
+    "setup:python": "pip install -r requirements.txt",
+    "clean": "npm run clean:services",
+    "clean:services": "cd services && rm -rf dist node_modules && npm install",
+    "logs": "tail -f services/logs/*.log",
+    "stop": "pkill -f 'node.*enhanced-system' || true"
+  },
+  "workspaces": [
+    "services"
+  ],
+  "dependencies": {
+    "axios": "^1.6.0",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "node-cron": "^3.0.3",
+    "winston": "^3.11.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.8.0",
+    "concurrently": "^8.2.2",
+    "nodemon": "^3.0.1"
+  },
+  "engines": {
+    "node": ">=16.0.0",
+    "npm": ">=8.0.0"
+  },
+  "keywords": [
+    "defi",
+    "arbitrage",
+    "flashloan",
+    "ethereum",
+    "polygon",
+    "brownie",
+    "typescript",
+    "mev-protection",
+    "gas-optimization",
+    "slippage-protection"
+  ],
+  "author": "Enhanced DeFi Arbitrage Team",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/your-username/enhanced-defi-arbitrage.git"
+  },
+  "bugs": {
+    "url": "https://github.com/your-username/enhanced-defi-arbitrage/issues"
+  },
+  "homepage": "https://github.com/your-username/enhanced-defi-arbitrage#readme"
+}

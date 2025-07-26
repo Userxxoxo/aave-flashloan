@@ -1,64 +1,488 @@
-# Aave Flash Loan Brownie Mix
+# Enhanced DeFi Arbitrage System
 
-![Aave Banner](box-img-sm.png)
+![DeFi Banner](box-img-sm.png)
 
-*Adapted from [aave/flashloan-box](https://github.com/aave/flashloan-box) by [mrdavey](https://github.com/mrdavey/).*
+*Advanced flash loan arbitrage system with multi-network support, MEV protection, and intelligent risk management.*
 
-This Brownie mix comes with everything you need to start [developing on flash loans](https://docs.aave.com/developers/guides/flash-loans).
+## 🚀 Overview
 
-This mix is configured for use with [Ganache](https://github.com/trufflesuite/ganache-cli) on a [forked mainnet](https://eth-brownie.readthedocs.io/en/stable/network-management.html#using-a-forked-development-network).
+This is a comprehensive DeFi arbitrage system that combines the power of Python/Brownie for smart contract interactions with TypeScript services for advanced features like MEV protection, gas optimization, and intelligent slippage management. The system supports multiple networks and provides a complete solution for profitable and secure arbitrage trading.
 
-*It supports both Aave V1 and V2.*
+### ✨ Key Features
 
-## Installation and Setup
+- **🔗 Multi-Network Support**: Ethereum, Polygon, Arbitrum, Optimism
+- **🛡️ MEV Protection**: Advanced protection against front-running and sandwich attacks
+- **⚡ Gas Optimization**: Intelligent gas price management and optimization
+- **📊 Slippage Protection**: Dynamic slippage calculation and protection
+- **🎯 Risk Management**: Comprehensive risk assessment and position sizing
+- **🔄 Real-time Monitoring**: Live system health monitoring and alerting
+- **📈 Advanced Analytics**: Performance tracking and profit optimization
+- **🌐 Multi-DEX Integration**: Support for major DEXs and aggregators
+- **🔧 Modular Architecture**: Easily extensible and maintainable codebase
 
-1. [Install Brownie](https://eth-brownie.readthedocs.io/en/stable/install.html) & [Ganache-CLI](https://github.com/trufflesuite/ganache-cli), if you haven't already.
+### 🏗️ System Architecture
 
-2. Sign up for [Infura](https://infura.io/) and generate an API key. Store it in the `WEB3_INFURA_PROJECT_ID` environment variable. You can [learn more about environment variables here](https://www.twilio.com/blog/2017/01/how-to-set-environment-variables.html). If you're unfamiliar with environment variables you can just add all these commands to your `.env` file and run `source .env` when you're done. 
-
-```bash
-export WEB3_INFURA_PROJECT_ID=YourProjectID
+```
+┌─────────────────────────────────────────────────────────────┐
+│                    Enhanced DeFi System                     │
+├─────────────────────────────────────────────────────────────┤
+│  Python/Brownie Layer          │  TypeScript Services       │
+│  ├─ Arbitrage Bot              │  ├─ DeFi System Core       │
+│  ├─ Smart Contracts            │  ├─ Network Manager        │
+│  ├─ Dashboard                  │  ├─ Liquidity Aggregator   │
+│  └─ Bridge Integration         │  ├─ Risk Manager           │
+│                                │  ├─ Gas Optimizer          │
+│                                │  ├─ MEV Protection         │
+│                                │  └─ Slippage Protection    │
+└─────────────────────────────────────────────────────────────┘
 ```
 
-3. Sign up for [Etherscan](www.etherscan.io) and generate an API key. This is required for fetching source codes of the mainnet contracts we will be interacting with. Store the API key in the `ETHERSCAN_TOKEN` environment variable.
+## 📋 Prerequisites
+
+- **Node.js** >= 16.0.0
+- **Python** >= 3.8
+- **npm** >= 8.0.0
+- **Git**
+
+## 🛠️ Installation and Setup
+
+### 1. Clone and Install Dependencies
 
 ```bash
-export ETHERSCAN_TOKEN=YourApiToken
+# Clone the repository
+git clone https://github.com/your-username/enhanced-defi-arbitrage.git
+cd enhanced-defi-arbitrage
+
+# Install all dependencies (Python + TypeScript)
+npm run setup
 ```
 
-4. Download the mix.
+### 2. Environment Configuration
+
+Copy the example environment files and configure them:
 
 ```bash
-brownie bake aave-flashloan
+# Copy environment templates
+cp .env.example .env
+cp services/.env.example services/.env
+
+# Edit the configuration files with your API keys and settings
+nano .env
+nano services/.env
 ```
 
-5. Add your `PRIVATE_KEY` environment variable, with [a private key from you wallet.](https://metamask.zendesk.com/hc/en-us/articles/360015289632-How-to-Export-an-Account-Private-Key). *Note: If using metamask, you'll have to add a `0x` to the start of your private key) 
-
-## Quickstart (Kovan)
-
-We can see our flash loans on Etherscan via the Kovan testnet. If you're rather *run everything locally, check out the [Basic Console Use](#basic-console-use).
-
-1. Get some WETH. We need this to pay the preimum that flash loans cost. 
+**Required Environment Variables:**
 
 ```bash
-$ brownie run scripts/get_weth.py --network kovan
+# Network Configuration
+POLYGON_RPC_URL=https://polygon-mainnet.g.alchemy.com/v2/YOUR_KEY
+ETHEREUM_RPC_URL=https://mainnet.infura.io/v3/YOUR_KEY
+
+# Wallet Configuration
+PRIVATE_KEY=0xYOUR_PRIVATE_KEY
+WALLET_ADDRESS=0xYOUR_WALLET_ADDRESS
+
+# API Keys
+ONEINCH_API_KEY=your_1inch_api_key
+ZEROX_API_KEY=your_0x_api_key
+COINGECKO_API_KEY=your_coingecko_api_key
 ```
 
-2. Deploy the flash loan contract. This will also fund the contract with WETH to pay the flash loan fee if it's not funded. 
+### 3. Build TypeScript Services
 
 ```bash
-$ brownie run scripts/deployment_v2.py --network kovan
+# Build the TypeScript services
+npm run build
 ```
 
-3. Execute the flash loan 
+### 4. Deploy Smart Contracts (Optional)
 
 ```bash
-$ brownie run scripts/run_flash_loan_v2.py --network kovan
+# Deploy to Polygon testnet
+npm run deploy:testnet
+
+# Deploy to Polygon mainnet (when ready)
+npm run deploy
 ```
 
-This will print out an etherscan URL to see the flash loan transaction. [Like this one.](https://kovan.etherscan.io/tx/0x161d423dd1a56e7c440dabed95bea314b63668fc462567348ba4dd188e894de3)
+## 🚀 Quick Start
 
-## Basic Console Use
+### Start the Complete System
+
+```bash
+# Start all services (TypeScript + Python + Dashboard)
+npm start
+
+# Or start individual components
+npm run start:services    # TypeScript services only
+npm run start:python     # Python arbitrage bot only
+npm run start:dashboard  # Dashboard only
+```
+
+### System Health Check
+
+```bash
+# Run comprehensive health check
+npm run health-check
+
+# Monitor system status
+npm run test:integration
+```
+
+### View Dashboard
+
+Once started, access the system dashboard at:
+- **Dashboard**: http://localhost:5000
+- **API Services**: http://localhost:3001-3007
+
+## 📊 Usage Examples
+
+### Basic Arbitrage Scanning
+
+The system automatically scans for arbitrage opportunities across multiple DEXs:
+
+```python
+# The arbitrage bot runs continuously and will:
+# 1. Scan for price differences across DEXs
+# 2. Calculate potential profits
+# 3. Assess risks using TypeScript services
+# 4. Execute profitable trades automatically
+```
+
+### Manual Trade Execution
+
+```bash
+# Execute a specific arbitrage opportunity
+brownie run scripts/run_flash_loan_v2.py --network polygon-main
+```
+
+### Advanced Configuration
+
+```bash
+# Enable MEV protection
+export MEV_PROTECTION_ENABLED=true
+
+# Set custom profit thresholds
+export MIN_PROFIT_USD=5.0
+export MIN_PROFIT_PERCENTAGE=0.5
+
+# Configure gas optimization
+export MAX_GAS_PRICE_GWEI=30
+```
+
+## 🏗️ System Components
+
+### TypeScript Services
+
+#### 1. DeFi System Core (`port 3001`)
+- **Purpose**: Main orchestration service
+- **Features**: Trade execution, system coordination, API gateway
+- **Endpoints**: `/health`, `/opportunity`, `/execute`, `/status`
+
+#### 2. Network Manager (`port 3002`)
+- **Purpose**: Multi-network RPC management
+- **Features**: Network switching, RPC failover, connection pooling
+- **Endpoints**: `/health`, `/networks`, `/switch`, `/status`
+
+#### 3. Liquidity Aggregator (`port 3003`)
+- **Purpose**: DEX liquidity aggregation and routing
+- **Features**: Multi-DEX price comparison, optimal routing
+- **Endpoints**: `/health`, `/liquidity`, `/route`, `/prices`
+
+#### 4. Risk Manager (`port 3004`)
+- **Purpose**: Risk assessment and position management
+- **Features**: Risk scoring, position sizing, safety checks
+- **Endpoints**: `/health`, `/assess`, `/limits`, `/metrics`
+
+#### 5. Gas Optimizer (`port 3005`)
+- **Purpose**: Gas price optimization and management
+- **Features**: Dynamic gas pricing, optimization strategies
+- **Endpoints**: `/health`, `/optimize`, `/estimate`, `/prices`
+
+#### 6. MEV Protection (`port 3006`)
+- **Purpose**: MEV attack prevention and mitigation
+- **Features**: Front-running protection, private mempools
+- **Endpoints**: `/health`, `/protect`, `/analyze`, `/submit`
+
+#### 7. Slippage Protection (`port 3007`)
+- **Purpose**: Slippage calculation and protection
+- **Features**: Dynamic slippage limits, impact analysis
+- **Endpoints**: `/health`, `/calculate`, `/protect`, `/analyze`
+
+### Python Components
+
+#### Arbitrage Bot (`scripts/polygon_arbitrage_bot.py`)
+- **Purpose**: Main arbitrage scanning and execution
+- **Features**: Opportunity detection, trade execution, profit tracking
+- **Integration**: Uses TypeScript services for enhanced analysis
+
+#### Dashboard (`run_dashboard.py`)
+- **Purpose**: Web-based monitoring and control interface
+- **Features**: Real-time metrics, trade history, system controls
+- **Access**: http://localhost:5000
+
+#### Bridge Integration (`scripts/python_typescript_bridge.py`)
+- **Purpose**: Communication layer between Python and TypeScript
+- **Features**: Data synchronization, service integration, health monitoring
+
+## 🔧 Configuration Guide
+
+### Environment Variables
+
+The system uses comprehensive environment configuration. Key categories:
+
+#### Network Configuration
+```bash
+POLYGON_RPC_URL=https://polygon-mainnet.g.alchemy.com/v2/YOUR_KEY
+ETHEREUM_RPC_URL=https://mainnet.infura.io/v3/YOUR_KEY
+ARBITRUM_RPC_URL=https://arb1.arbitrum.io/rpc
+OPTIMISM_RPC_URL=https://mainnet.optimism.io
+```
+
+#### Trading Parameters
+```bash
+MIN_PROFIT_USD=1.0
+MIN_PROFIT_PERCENTAGE=0.30
+MAX_GAS_PRICE_GWEI=50
+MAX_SLIPPAGE_PERCENT=2.0
+```
+
+#### Service Configuration
+```bash
+DEFI_SYSTEM_PORT=3001
+NETWORK_MANAGER_PORT=3002
+LIQUIDITY_AGGREGATOR_PORT=3003
+RISK_MANAGER_PORT=3004
+```
+
+#### Security Settings
+```bash
+MEV_PROTECTION_ENABLED=true
+PRIVATE_MEMPOOL_ENABLED=false
+FLASHBOTS_ENABLED=true
+```
+
+### Advanced Features
+
+#### MEV Protection
+- **Front-running Protection**: Detects and prevents front-running attacks
+- **Private Mempools**: Routes transactions through private mempools
+- **Flashbots Integration**: Uses Flashbots for MEV-protected execution
+
+#### Gas Optimization
+- **Dynamic Pricing**: Adjusts gas prices based on network conditions
+- **Optimization Strategies**: Multiple gas optimization algorithms
+- **Cost Analysis**: Comprehensive gas cost analysis and reporting
+
+#### Risk Management
+- **Position Sizing**: Intelligent position sizing based on risk assessment
+- **Safety Limits**: Multiple safety mechanisms and circuit breakers
+- **Real-time Monitoring**: Continuous risk monitoring and alerting
+
+## 🧪 Testing
+
+### Run All Tests
+```bash
+# Run complete test suite
+npm test
+
+# Run TypeScript service tests
+npm run test:services
+
+# Run Python/Brownie tests
+npm run test:python
+
+# Run integration tests
+npm run test:integration
+```
+
+### Individual Component Testing
+```bash
+# Test specific TypeScript service
+cd services && npm run test -- --testPathPattern=NetworkManager
+
+# Test Python arbitrage logic
+brownie test tests/test_flashloan_v2.py
+
+# Test system integration
+node scripts/system-health-check.js
+```
+
+## 📈 Monitoring and Analytics
+
+### System Health Monitoring
+```bash
+# Real-time health check
+npm run health-check
+
+# Continuous monitoring
+npm run logs
+```
+
+### Performance Metrics
+- **Profit Tracking**: Real-time profit and loss tracking
+- **Success Rates**: Trade execution success rates
+- **Gas Efficiency**: Gas usage optimization metrics
+- **Network Performance**: RPC response times and reliability
+
+### Alerting
+- **Discord Integration**: Real-time alerts via Discord webhooks
+- **Telegram Notifications**: Trade notifications via Telegram
+- **Email Alerts**: Critical system alerts via email
+
+## 🔒 Security Considerations
+
+### Private Key Management
+- Store private keys securely using environment variables
+- Never commit private keys to version control
+- Consider using hardware wallets for production
+
+### Network Security
+- Use reputable RPC providers with proper authentication
+- Implement rate limiting and request validation
+- Monitor for unusual network activity
+
+### Smart Contract Security
+- All contracts are thoroughly tested and audited
+- Use established patterns and libraries
+- Implement proper access controls and safety checks
+
+## 🚨 Troubleshooting
+
+### Common Issues
+
+#### Services Not Starting
+```bash
+# Check if ports are available
+netstat -tulpn | grep :3001
+
+# Check service logs
+npm run logs
+
+# Restart services
+npm run clean && npm run build && npm start
+```
+
+#### RPC Connection Issues
+```bash
+# Test RPC connectivity
+curl -X POST -H "Content-Type: application/json" \
+  --data '{"jsonrpc":"2.0","method":"eth_blockNumber","params":[],"id":1}' \
+  $POLYGON_RPC_URL
+```
+
+#### Python Environment Issues
+```bash
+# Reinstall Python dependencies
+pip install -r requirements.txt
+
+# Check Brownie installation
+brownie --version
+```
+
+### Debug Mode
+```bash
+# Enable debug logging
+export DEBUG_MODE=true
+export LOG_LEVEL=debug
+
+# Start with verbose logging
+npm start
+```
+
+## 📚 API Documentation
+
+### TypeScript Services API
+
+All services expose RESTful APIs with the following common endpoints:
+
+#### Health Check
+```bash
+GET /health
+Response: { "status": "healthy", "timestamp": "...", "uptime": 12345 }
+```
+
+#### Service Status
+```bash
+GET /status
+Response: { "service": "...", "version": "1.0.0", "metrics": {...} }
+```
+
+### Service-Specific Endpoints
+
+#### DeFi System Core
+```bash
+POST /opportunity    # Submit arbitrage opportunity
+POST /execute        # Execute trade
+GET /metrics         # Get system metrics
+```
+
+#### Network Manager
+```bash
+GET /networks        # List available networks
+POST /switch         # Switch network
+GET /status          # Network status
+```
+
+#### Liquidity Aggregator
+```bash
+GET /liquidity/:pair # Get liquidity for token pair
+POST /route          # Get optimal route
+GET /prices          # Get current prices
+```
+
+## 🤝 Contributing
+
+### Development Setup
+```bash
+# Fork and clone the repository
+git clone https://github.com/your-username/enhanced-defi-arbitrage.git
+
+# Create development branch
+git checkout -b feature/your-feature
+
+# Install dependencies
+npm run setup
+
+# Start development environment
+npm run dev
+```
+
+### Code Standards
+- **TypeScript**: Follow ESLint configuration
+- **Python**: Follow PEP 8 standards
+- **Testing**: Maintain >90% test coverage
+- **Documentation**: Update docs for all changes
+
+### Pull Request Process
+1. Create feature branch from `main`
+2. Implement changes with tests
+3. Update documentation
+4. Submit pull request with detailed description
+
+## 📄 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## 🙏 Acknowledgments
+
+- **Aave Protocol**: For flash loan infrastructure
+- **Brownie Framework**: For smart contract development
+- **OpenZeppelin**: For secure smart contract libraries
+- **DeFi Community**: For continuous innovation and support
+
+## 📞 Support
+
+- **Documentation**: Check this README and inline code comments
+- **Issues**: Report bugs via GitHub Issues
+- **Discussions**: Join community discussions
+- **Security**: Report security issues privately
+
+---
+
+## Legacy Documentation (Original Aave Flash Loan Mix)
+
+### Basic Console Use
 
 To perform a simple flash loan in a development environment:
 
